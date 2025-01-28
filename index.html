@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Tip calculator app</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>
+        SPLI
+        <span class="word-break-item"></span>
+        TTER
+      </h1>
+    </header>
+
+    <form class="card__wrapper">
+      <section class="input__section">
+        <div class="input-field__wrapper">
+          <label for="bill__input">Bill</label>
+          <input
+            class="manual-input"
+            type="text"
+            inputmode="numeric"
+            value="0.00"
+            name="bill-input"
+            id="bill__input"
+            pattern="[0-9]"
+          />
+        </div>
+
+        <div class="input-buttons__wrapper">
+          <label>Select Tip %</label>
+          <div class="input-buttons__grid">
+            <input
+              class="tip__input fix__input active"
+              type="button"
+              value="5%"
+            />
+            <input class="tip__input fix__input" type="button" value="10%" />
+            <input class="tip__input fix__input" type="button" value="15%" />
+            <input class="tip__input fix__input" type="button" value="25%" />
+            <input class="tip__input fix__input" type="button" value="50%" />
+            <input
+              class="tip__input custom__input"
+              type="text"
+              inputmode="numeric"
+              placeholder="Custom"
+            />
+          </div>
+        </div>
+
+        <div class="input-field__wrapper">
+          <label for="headcount__input">Number of People</label>
+          <input
+            class="manual-input"
+            type="text"
+            inputmode="numeric"
+            name="headcount-input"
+            id="headcount__input"
+            value="0.00"
+          />
+        </div>
+      </section>
+
+      <section class="output__section">
+        <div class="output-line">
+          <div class="output-text__wrapper">
+            <h2 class="output-main__text">Tip Amount</h2>
+            <p class="output-secondary__text">/ person</p>
+          </div>
+          <p class="output-result">0.00</p>
+        </div>
+        <div class="output-line">
+          <div class="output-text__wrapper">
+            <h2 class="output-main__text">Total</h2>
+            <p class="output-secondary__text">/ person</p>
+          </div>
+          <p class="output-result">0.00</p>
+        </div>
+        <button type="submit" class="reset__button">RESET</button>
+      </section>
+    </form>
+  </body>
+</html>
