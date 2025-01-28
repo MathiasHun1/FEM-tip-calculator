@@ -120,7 +120,7 @@ label {
   background: var(--clr-grayish-cyan);
 }
 
-.fix__input.active {
+.fix__input[data-selected='true'] {
   background-color: var(--clr-strong-cyan);
   color: var(--clr-very-dark-cyan);
 }
@@ -184,4 +184,14 @@ label {
 .reset__button:hover {
   background: var(--clr-grayish-cyan);
   cursor: pointer;
+}
+
+.manual-input:focus,
+.custom__input:focus {
+  border: none;
+  outline: 2px solid var(--clr-strong-cyan);
+}
+
+.error {
+  outline: 2px solid red;
 }

@@ -24,7 +24,7 @@
       </h1>
     </header>
 
-    <form class="card__wrapper">
+    <main class="card__wrapper">
       <section class="input__section">
         <div class="input-field__wrapper">
           <label for="bill__input">Bill</label>
@@ -32,7 +32,7 @@
             class="manual-input"
             type="text"
             inputmode="numeric"
-            value="0.00"
+            value=""
             name="bill-input"
             id="bill__input"
             pattern="[0-9]"
@@ -46,16 +46,44 @@
               class="tip__input fix__input active"
               type="button"
               value="5%"
+              data-value="5"
+              data-selected="true"
             />
-            <input class="tip__input fix__input" type="button" value="10%" />
-            <input class="tip__input fix__input" type="button" value="15%" />
-            <input class="tip__input fix__input" type="button" value="25%" />
-            <input class="tip__input fix__input" type="button" value="50%" />
+            <input
+              class="tip__input fix__input"
+              type="button"
+              value="10%"
+              data-value="10"
+              data-selected="false"
+            />
+            <input
+              class="tip__input fix__input"
+              type="button"
+              value="15%"
+              data-value="15"
+              data-selected="false"
+            />
+            <input
+              class="tip__input fix__input"
+              type="button"
+              value="25%"
+              data-value="25"
+              data-selected="false"
+            />
+            <input
+              class="tip__input fix__input"
+              type="button"
+              value="50%"
+              data-value="50"
+              data-selected="false"
+            />
             <input
               class="tip__input custom__input"
               type="text"
               inputmode="numeric"
               placeholder="Custom"
+              data-value="0"
+              data-selected="false"
             />
           </div>
         </div>
@@ -68,7 +96,7 @@
             inputmode="numeric"
             name="headcount-input"
             id="headcount__input"
-            value="0.00"
+            value=""
           />
         </div>
       </section>
@@ -79,17 +107,18 @@
             <h2 class="output-main__text">Tip Amount</h2>
             <p class="output-secondary__text">/ person</p>
           </div>
-          <p class="output-result">0.00</p>
+          <p class="output-result" id="person-output">0.00</p>
         </div>
         <div class="output-line">
           <div class="output-text__wrapper">
             <h2 class="output-main__text">Total</h2>
             <p class="output-secondary__text">/ person</p>
           </div>
-          <p class="output-result">0.00</p>
+          <p class="output-result" id="total-output">0.00</p>
         </div>
-        <button type="submit" class="reset__button">RESET</button>
+        <button class="reset__button">RESET</button>
       </section>
-    </form>
+    </main>
   </body>
+  <script type="module" src="index.js"></script>
 </html>
