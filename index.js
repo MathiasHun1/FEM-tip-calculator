@@ -6,6 +6,7 @@ const tipInputElementsAll = document.querySelectorAll('.tip__input');
 const totalOutputElement = document.getElementById('total-output');
 const tipOutputElement = document.getElementById('person-output');
 const errorMessage = document.querySelector('.error-message');
+const resetButton = document.querySelector('.reset__button');
 
 const allInputElements = [
   billInputElement,
@@ -134,6 +135,15 @@ function truncateLeadingZero(value) {
   return Number(value);
 }
 
+function setAppStateToDefault() {
+  billInputElement.value = '';
+  headCountElement.value = '';
+  clearCustomInput();
+  unselectAllTipInputs();
+  tipInputElementsAll[0].dataset.selected = 'true';
+  drawOutputValues('0.00', '0.00');
+}
+
 billInputElement.addEventListener('beforeinput', validateBillInput);
 headCountElement.addEventListener('beforeinput', validateNumberInput);
 tipInputManualElement.addEventListener('beforeinput', validateNumberInput);
@@ -169,9 +179,6 @@ tipInputManualElement.addEventListener('blur', (e) => {
     const result = calculateOutput();
     drawOutputValues(result.total, result.tip);
   }
-  // const truncatedValue = truncateLeadingZero(e.target.value);
-  // e.target.value = truncatedValue;
-  // e.target.dataset.value = truncatedValue;
 });
 
 tipInputManualElement.addEventListener('input', (e) => {
@@ -206,4 +213,8 @@ tipInputManualElement.addEventListener('input', (e) => {
       e.target.value = truncateLeadingZero(e.target.value);
     }
   });
+});
+
+resetButton.addEventListener('click', () => {
+  setAppStateToDefault();
 });
