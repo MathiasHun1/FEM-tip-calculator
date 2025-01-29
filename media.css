@@ -1,0 +1,31 @@
+@media (min-width: 1100px) {
+  .header {
+    padding-top: 10vh;
+    padding-bottom: 8vh;
+  }
+
+  .card__wrapper {
+    width: 920px;
+    max-width: unset;
+    flex-direction: row;
+    border-radius: 25px;
+  }
+
+  .input__section,
+  .output__section {
+    flex: 1;
+  }
+
+  .input-buttons__grid {
+    grid-template-columns: repeat(3, minmax(30px, 1fr));
+  }
+
+  .output__section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reset__button {
+    margin-top: auto;
+  }
+}

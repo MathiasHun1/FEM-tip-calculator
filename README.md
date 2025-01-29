@@ -7,3 +7,5 @@ it ponints to the first input with matching id
 # how to make a number input field without the default arrows ?
 
 type="text", inputmode="numeric", pattern=[regex], "beforeinput" event
+
+# How to check a list of sibling elements

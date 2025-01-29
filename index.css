@@ -38,7 +38,7 @@ body {
 }
 
 .header {
-  width: min-content;
+  width: 100%;
   letter-spacing: 1rem;
   line-height: 0.6;
   text-align: center;
@@ -46,7 +46,19 @@ body {
   color: var(--clr-dark-greyish-cyan);
 }
 
+.header h1 {
+  width: min-content;
+  margin-inline: auto;
+  padding-block: 5vh;
+}
+
+.main {
+  width: 100vw;
+}
+
 .card__wrapper {
+  max-width: 550px;
+  margin-inline: auto;
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -113,11 +125,7 @@ label {
 .tip__input {
   border: none;
   outline: none;
-}
-
-.fix__input:hover {
-  cursor: pointer;
-  background: var(--clr-grayish-cyan);
+  border-radius: 5px;
 }
 
 .fix__input[data-selected='true'] {
@@ -130,8 +138,12 @@ label {
   background: var(--clr-very-dark-cyan);
   text-align: center;
   padding: 6px;
-  border-radius: 5px;
   font-size: var(--fs-L);
+}
+
+.fix__input:hover {
+  cursor: pointer;
+  background: var(--clr-grayish-cyan);
 }
 
 .custom__input {

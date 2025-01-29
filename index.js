@@ -8,16 +8,6 @@ const tipOutputElement = document.getElementById('person-output');
 const errorMessage = document.querySelector('.error-message');
 const resetButton = document.querySelector('.reset__button');
 
-const allInputElements = [
-  billInputElement,
-  headCountElement,
-  [...tipInputElementsAll],
-];
-
-let billInputValue;
-let tipInputValue;
-let headCountInputValue;
-
 function validateBillInput(e) {
   const value = e.target.value;
   const inputCharacter = e.data;
@@ -198,6 +188,10 @@ tipInputManualElement.addEventListener('input', (e) => {
       return;
     }
 
+    if (headCountElement.value !== '0') {
+      removeError();
+    }
+
     if (isAllDataFilled()) {
       removeError();
       const result = calculateOutput();
@@ -211,6 +205,10 @@ tipInputManualElement.addEventListener('input', (e) => {
     const value = e.target.value;
     if (value && value !== '0') {
       e.target.value = truncateLeadingZero(e.target.value);
+    }
+
+    if (headCountElement.value !== '0') {
+      removeError();
     }
   });
 });

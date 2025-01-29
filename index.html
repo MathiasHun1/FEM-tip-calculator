@@ -14,6 +14,7 @@
     <title>Tip calculator app</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="media.css" />
   </head>
   <body>
     <header class="header">
@@ -24,103 +25,106 @@
       </h1>
     </header>
 
-    <main class="card__wrapper">
-      <section class="input__section">
-        <div class="input-field__wrapper">
-          <label for="bill__input">Bill</label>
-          <input
-            class="manual-input"
-            type="text"
-            inputmode="numeric"
-            value=""
-            name="bill-input"
-            id="bill__input"
-            pattern="[0-9]"
-          />
-        </div>
-
-        <div class="input-buttons__wrapper">
-          <label>Select Tip %</label>
-          <div class="input-buttons__grid">
+    <main class="main">
+      <div class="card__wrapper">
+        <section class="input__section">
+          <div class="input-field__wrapper">
+            <label for="bill__input">Bill</label>
             <input
-              class="tip__input fix__input active"
-              type="button"
-              value="5%"
-              data-value="5"
-              data-selected="true"
-            />
-            <input
-              class="tip__input fix__input"
-              type="button"
-              value="10%"
-              data-value="10"
-              data-selected="false"
-            />
-            <input
-              class="tip__input fix__input"
-              type="button"
-              value="15%"
-              data-value="15"
-              data-selected="false"
-            />
-            <input
-              class="tip__input fix__input"
-              type="button"
-              value="25%"
-              data-value="25"
-              data-selected="false"
-            />
-            <input
-              class="tip__input fix__input"
-              type="button"
-              value="50%"
-              data-value="50"
-              data-selected="false"
-            />
-            <input
-              class="tip__input custom__input"
+              class="manual-input"
               type="text"
               inputmode="numeric"
-              placeholder="Custom"
-              data-value="0"
-              data-selected="false"
+              value=""
+              name="bill-input"
+              id="bill__input"
+              pattern="[0-9]"
             />
           </div>
-        </div>
-
-        <div class="input-field__wrapper">
-          <div class="error-container">
-            <label for="headcount__input">Number of People</label>
-            <p class="error-message hidden">Can't be zero!</p>
+          <div class="input-buttons__wrapper">
+            <label>Select Tip %</label>
+            <div class="input-buttons__grid">
+              <input
+                class="tip__input fix__input active"
+                type="button"
+                value="5%"
+                data-value="5"
+                data-selected="true"
+              />
+              <input
+                class="tip__input fix__input"
+                type="button"
+                value="10%"
+                data-value="10"
+                data-selected="false"
+              />
+              <input
+                class="tip__input fix__input"
+                type="button"
+                value="15%"
+                data-value="15"
+                data-selected="false"
+              />
+              <input
+                class="tip__input fix__input"
+                type="button"
+                value="25%"
+                data-value="25"
+                data-selected="false"
+              />
+              <input
+                class="tip__input fix__input"
+                type="button"
+                value="50%"
+                data-value="50"
+                data-selected="false"
+              />
+              <input
+                class="tip__input custom__input"
+                type="text"
+                inputmode="numeric"
+                placeholder="Custom"
+                data-value="0"
+                data-selected="false"
+              />
+            </div>
           </div>
-          <input
-            class="manual-input"
-            type="text"
-            inputmode="numeric"
-            name="headcount-input"
-            id="headcount__input"
-            value=""
-          />
-        </div>
-      </section>
-
-      <section class="output__section">
-        <div class="output-line">
-          <div class="output-text__wrapper">
-            <h2 class="output-main__text">Tip Amount</h2>
-            <p class="output-secondary__text">/ person</p>
+          <div class="input-field__wrapper">
+            <div class="error-container">
+              <label for="headcount__input">Number of People</label>
+              <p class="error-message hidden">Can't be zero!</p>
+            </div>
+            <input
+              class="manual-input"
+              type="text"
+              inputmode="numeric"
+              name="headcount-input"
+              id="headcount__input"
+              value=""
+            />
           </div>
-          <p class="output-result" id="person-output">0.00</p>
-        </div>
-        <div class="output-line">
-          <div class="output-text__wrapper">
-            <h2 class="output-main__text">Total</h2>
-            <p class="output-secondary__text">/ person</p>
+        </section>
+        <section class="output__section">
+          <div class="output-line">
+            <div class="output-text__wrapper">
+              <h2 class="output-main__text">Tip Amount</h2>
+              <p class="output-secondary__text">/ person</p>
+            </div>
+            <p class="output-result" id="person-output">
+              <span class="dollar-sign">$</span>0.00
+            </p>
           </div>
-          <p class="output-result" id="total-output">0.00</p>
-        </div>
-        <button class="reset__button">RESET</button>
-      </section>
+          <div class="output-line">
+            <div class="output-text__wrapper">
+              <h2 class="output-main__text">Total</h2>
+              <p class="output-secondary__text">/ person</p>
+            </div>
+            <p class="output-result" id="total-output">
+              <span class="dollar-sign">$</span>0.00
+            </p>
+          </div>
+          <button class="reset__button">RESET</button>
+        </section>
+      </div>
     </main>
   </body>
   <script type="module" src="index.js"></script>
