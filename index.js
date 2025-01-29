@@ -162,7 +162,7 @@ tipInputManualElement.addEventListener('blur', (e) => {
   if (e.target.value && e.target.value !== '0') {
     const truncatedValue = truncateLeadingZero(e.target.value);
     e.target.value = truncatedValue;
-    e.dataset.value = truncatedValue;
+    e.target.dataset.value = truncatedValue;
   }
 
   if (isAllDataFilled()) {
