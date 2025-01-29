@@ -44,12 +44,16 @@ body {
   text-align: center;
   padding-block: 50px;
   color: var(--clr-dark-greyish-cyan);
+  padding-block: 5vh;
 }
 
 .header h1 {
   width: min-content;
   margin-inline: auto;
-  padding-block: 5vh;
+}
+
+.header h1:first-of-type {
+  margin-bottom: 1.2rem;
 }
 
 .main {
@@ -202,6 +206,10 @@ label {
 .custom__input:focus {
   border: none;
   outline: 2px solid var(--clr-strong-cyan);
+}
+
+.fix__input:focus {
+  outline: 1px solid transparent;
 }
 
 .error {
