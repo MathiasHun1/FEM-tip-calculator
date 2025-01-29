@@ -28,4 +28,11 @@
   .reset__button {
     margin-top: auto;
   }
+
+  .result__wrapper {
+    font-size: var(--fs-XXL);
+  }
+
+  .output-result {
+  }
 }

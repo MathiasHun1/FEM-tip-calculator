@@ -12,6 +12,7 @@
   --ff-base: 'Space Mono', sans-serif;
   --fw--bold: 700;
 
+  --fs-XXL: calc(48rem / 16);
   --fs-XL: calc(32rem / 16);
   --fs-L: calc(24rem / 16);
   --fs-M: calc(16rem / 16);
@@ -181,9 +182,14 @@ label {
   justify-content: space-between;
 }
 
-.output-result {
+.result__wrapper {
+  display: flex;
+  align-items: center;
   font-size: var(--fs-XL);
   color: var(--clr-strong-cyan);
+}
+
+.output-result {
 }
 
 .reset__button {
