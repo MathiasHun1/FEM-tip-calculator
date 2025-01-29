@@ -195,3 +195,16 @@ label {
 .error {
   outline: 2px solid red;
 }
+
+.error-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error-message {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}

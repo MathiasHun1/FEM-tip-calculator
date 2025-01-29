@@ -89,7 +89,10 @@
         </div>
 
         <div class="input-field__wrapper">
-          <label for="headcount__input">Number of People</label>
+          <div class="error-container">
+            <label for="headcount__input">Number of People</label>
+            <p class="error-message hidden">Can't be zero!</p>
+          </div>
           <input
             class="manual-input"
             type="text"

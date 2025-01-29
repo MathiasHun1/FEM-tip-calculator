@@ -5,6 +5,7 @@ const tipInputManualElement = document.querySelector('.custom__input');
 const tipInputElementsAll = document.querySelectorAll('.tip__input');
 const totalOutputElement = document.getElementById('total-output');
 const tipOutputElement = document.getElementById('person-output');
+const errorMessage = document.querySelector('.error-message');
 
 const allInputElements = [
   billInputElement,
@@ -98,22 +99,17 @@ function isAllDataFilled() {
   }
 }
 
-function calculateTotal() {
+function calculateOutput() {
   const bill = Number(billInputElement.value);
   const tip = Number(getTipInputValue()) / 100;
   const headCount = Number(headCountElement.value);
-  const result = (bill + bill * tip) / headCount;
+  const resultTotal = ((bill + bill * tip) / headCount).toFixed(2);
+  const resultTip = ((bill * tip) / headCount).toFixed(2);
 
-  return result.toFixed(2);
-}
-
-function calculateTip() {
-  const bill = Number(billInputElement.value);
-  const tip = Number(getTipInputValue()) / 100;
-  const headCount = Number(headCountElement.value);
-  const result = (bill * tip) / headCount;
-
-  return result.toFixed(2);
+  return {
+    tip: resultTip,
+    total: resultTotal,
+  };
 }
 
 function drawOutputValues(totalValue, tipValue) {
@@ -121,19 +117,40 @@ function drawOutputValues(totalValue, tipValue) {
   tipOutputElement.innerText = tipValue;
 }
 
-billInputElement.addEventListener('beforeinput', validateBillInput);
-tipInputManualElement.addEventListener('beforeinput', validateNumberInput);
-headCountElement.addEventListener('beforeinput', validateNumberInput);
+function setError() {
+  headCountElement.classList.add('error');
+  errorMessage.classList.remove('hidden');
+}
 
+function removeError() {
+  headCountElement.classList.remove('error');
+  errorMessage.classList.add('hidden');
+}
+
+function truncateLeadingZero(value) {
+  if (!value || value === '0') {
+    return;
+  }
+  return Number(value);
+}
+
+billInputElement.addEventListener('beforeinput', validateBillInput);
+headCountElement.addEventListener('beforeinput', validateNumberInput);
+tipInputManualElement.addEventListener('beforeinput', validateNumberInput);
 tipInputElementsAll.forEach((element) => {
   element.addEventListener('click', (e) => {
     unselectAllTipInputs();
     e.target.dataset.selected = true;
 
     if (isAllDataFilled()) {
-      drawOutputValues(calculateTotal(), calculateTip());
+      const result = calculateOutput();
+      drawOutputValues(result.total, result.tip);
     }
   });
+});
+
+tipInputButtons.forEach((element) => {
+  element.addEventListener('click', () => clearCustomInput());
 });
 
 tipInputManualElement.addEventListener('blur', (e) => {
@@ -141,24 +158,52 @@ tipInputManualElement.addEventListener('blur', (e) => {
     e.target.value = 0;
     e.target.dataset.value = 0;
   }
+
+  if (e.target.value && e.target.value !== '0') {
+    const truncatedValue = truncateLeadingZero(e.target.value);
+    e.target.value = truncatedValue;
+    e.dataset.value = truncatedValue;
+  }
+
+  if (isAllDataFilled()) {
+    const result = calculateOutput();
+    drawOutputValues(result.total, result.tip);
+  }
+  // const truncatedValue = truncateLeadingZero(e.target.value);
+  // e.target.value = truncatedValue;
+  // e.target.dataset.value = truncatedValue;
 });
 
 tipInputManualElement.addEventListener('input', (e) => {
   e.target.dataset.value = e.target.value;
-});
 
-tipInputButtons.forEach((element) => {
-  element.addEventListener('click', () => clearCustomInput());
+  if (isAllDataFilled()) {
+    const result = calculateOutput();
+    drawOutputValues(result.total, result.tip);
+  }
 });
 
 [billInputElement, headCountElement].forEach((element) => {
   element.addEventListener('input', () => {
-    if (!isAllDataFilled()) {
+    if (headCountElement.value === '0') {
+      setError();
+      drawOutputValues('0.00', '0.00');
       return;
     }
 
-    const resultTotal = calculateTotal();
-    const resultTip = calculateTip();
-    drawOutputValues(resultTotal, resultTip);
+    if (isAllDataFilled()) {
+      removeError();
+      const result = calculateOutput();
+      drawOutputValues(result.total, result.tip);
+    }
+  });
+});
+
+[billInputElement, headCountElement].forEach((element) => {
+  element.addEventListener('blur', (e) => {
+    const value = e.target.value;
+    if (value && value !== '0') {
+      e.target.value = truncateLeadingZero(e.target.value);
+    }
   });
 });
